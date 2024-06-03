@@ -1,0 +1,29 @@
+.image{
+    width: 45%;
+    height: 80%;
+    object-fit: cover;
+    border-radius: 50%;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+}
+
+.display-flex {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 60%;
+}
+
+.button{
+  margin: 15px;
+}
+
+mat-card{
+  margin: 15px;
+  width: 100%;
+}
+
+.bold{
+  font-weight: 480;
+  color: #808080;
+}

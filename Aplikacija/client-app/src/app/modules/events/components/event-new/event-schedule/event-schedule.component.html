@@ -1,0 +1,11 @@
+<div class="button-container">
+  <div *ngFor="let slot of timeSlots">
+    <button mat-raised-button [disabled]="isOccupied(slot)" (click)="selectSlot(slot)" [class.selected]="isSelected(slot)">
+      {{slot}}:00 - {{slot + 1}}:00
+    </button>
+  </div>
+</div>
+
+
+
+

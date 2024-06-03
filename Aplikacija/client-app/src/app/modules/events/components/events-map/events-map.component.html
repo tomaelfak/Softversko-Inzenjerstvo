@@ -1,0 +1,47 @@
+<div class="map-wrap">
+  <mat-form-field class="margin-10">
+    <mat-label>Select a sport</mat-label>
+    <mat-select [(value)]="selectedSport" (selectionChange)="onShowChanged()">
+      <mat-option value="all">Show all courts</mat-option>
+      <mat-option value="football">Football</mat-option>
+      <mat-option value="basketball">Basketball</mat-option>
+      <mat-option value="tennis">Tennis</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field class="margin-10">
+    <mat-label>Select a type of court</mat-label>
+    <mat-select [(value)]="selectedCourt" (selectionChange)="onShowChanged()">
+      <mat-option value="all">Show all courts</mat-option>
+      <mat-option value="street">Street court</mat-option>
+      <mat-option value="hall">Hall</mat-option>
+    </mat-select>
+  </mat-form-field>
+<!--  <div class="map" #map></div>-->
+<div class="map">
+  <mgl-map #map
+    [style]="'https://api.maptiler.com/maps/bright-v2/style.json?key=d96hSHCLErl8rkEEoIrM'"
+    [zoom]="[13]"
+    [center]="[21.9113, 43.3219]"
+    [preserveDrawingBuffer]="true"
+  >
+    <div *ngFor="let court of courts">
+      <mgl-marker *ngIf="court.toShow" [lngLat]="[court.longitude, court.latitude]">
+        <div
+          (click)="onMarkerClick(court)"
+          class="marker, court-icon"
+          [style.backgroundImage]="'url(assets/' + court.sport + '-court.png)'"
+        ></div>
+      </mgl-marker>
+    </div>
+
+    <mgl-control mglNavigation position="top-left"></mgl-control>
+
+
+
+  </mgl-map>
+</div>
+  <button mat-flat-button color="primary" routerLink="/events/court/new" >Add new Court</button>
+  <button mat-flat-button color="accent" routerLink="/events/court/edit" >Edit Courts</button>
+
+</div>

@@ -1,0 +1,52 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="(isHandset$ | async) === false"
+      [ngClass]="{hidden: !(isHandset$ | async )}">
+    <mat-toolbar>Menu</mat-toolbar>
+    <mat-nav-list >
+      <a mat-list-item routerLinkActive="active" routerLink="/events" *ngIf="isAuthenticated && role!=='Manager'">Events</a>
+      <a mat-list-item routerLinkActive="active" routerLink="/events/halls" *ngIf="isAuthenticated && role==='Manager'">My Halls</a>
+      <a mat-list-item routerLinkActive="active" routerLink="/teams" *ngIf="isAuthenticated && role==='Player'">Teams</a>
+      <a mat-list-item routerLinkActive="active" routerLink="/auth/admin-panel" *ngIf="isAuthenticated && role==='Admin'">Admin Panel</a>
+      <a mat-list-item routerLinkActive="active" routerLink="/teams/table">Table</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      @if (isHandset$ | async) {
+        <button
+          type="button"
+          aria-label="Toggle sidenav"
+          mat-icon-button
+          (click)="drawer.toggle()">
+          <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+        </button>
+      }
+      <span>Ball Ball</span>
+      @if (!(isHandset$ | async)) {
+        <span >
+          <a mat-button routerLinkActive="active" routerLink="/events" *ngIf="isAuthenticated&& role!=='Manager'">Events</a>
+          <a mat-button routerLinkActive="active" routerLink="/events/halls" *ngIf="isAuthenticated && role==='Manager'">My Halls</a>
+          <a mat-button routerLinkActive="active" routerLink="/teams" *ngIf="isAuthenticated && role==='Player'">Teams</a>
+          <a mat-button routerLinkActive="active" routerLink="/auth/admin-panel" *ngIf="isAuthenticated && role==='Admin'">Admin Panel</a>
+          <a mat-button routerLinkActive="active" routerLink="/teams/table">Table</a>
+        </span>
+      }
+      <span class="spacer"></span>
+      <span>
+        <a mat-button routerLink="/auth" *ngIf="!isAuthenticated">Sign in</a>
+        <a mat-button (click)="onLogout()" *ngIf="isAuthenticated">Log out</a>
+        <button mat-icon-button aria-label="Open User page" *ngIf="isAuthenticated && role==='Player'" routerLinkActive="active" [routerLink]="'/player/page/'+username">
+          <mat-icon>person</mat-icon>
+        </button>
+        <button mat-icon-button aria-label="Notifications" *ngIf="isAuthenticated && role==='Player'">
+          <mat-icon>notifications</mat-icon>
+        </button>
+      </span>
+    </mat-toolbar>
+    <!-- Add Content Here -->
+    <ng-content></ng-content>
+  </mat-sidenav-content>
+</mat-sidenav-container>

@@ -1,0 +1,91 @@
+<form class="form-group" #courtForm="ngForm" (ngSubmit)="onSubmit(courtForm)">
+  <mat-progress-bar *ngIf="isLoading" mode="indeterminate"></mat-progress-bar>
+  <h2 style="text-align: center">{{selectedHall?.name}}</h2>
+  <mat-form-field class="margin-10">
+    <mat-label>Select a sport</mat-label>
+    <mat-select required ngModel [(ngModel)]="sportInput" #sport="ngModel" name="sport">
+      <mat-option value="football">Football</mat-option>
+      <mat-option value="basketball">Basketball</mat-option>
+      <mat-option value="tennis">Tennis</mat-option>
+    </mat-select>
+    <mat-error *ngIf="sport.invalid && sport.touched">Must select a value</mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="margin-10">
+    <mat-label>Name</mat-label>
+    <input matInput
+           ngModel
+           [(ngModel)]="nameInput"
+           #name="ngModel"
+           type="input"
+           name="name"
+           required>
+    <mat-error *ngIf="name.invalid && name.touched">You must enter a name</mat-error>
+  </mat-form-field>
+
+
+  <mat-form-field class="margin-10">
+    <mat-label>Address</mat-label>
+    <input matInput
+           ngModel
+           [(ngModel)]="addressInput"
+           #address="ngModel"
+           type="input"
+           name="address"
+           required>
+    <mat-error *ngIf="address.invalid && address.touched">You must enter an address</mat-error>
+  </mat-form-field>
+
+  <div class="margin-10">
+    <h3>Set working time:</h3>
+    <p>Start: {{startTime}}:00</p>
+    <p>End: {{endTime}}:00</p>
+    <mat-slider
+      [max]="24"
+      [min]="0"
+      [step]="1"
+      [discrete]="false"
+      [showTickMarks]="false"
+      class="slider">
+      <input  matSliderStartThumb [(value)]="startTime" >
+      <input  matSliderEndThumb [(value)]="endTime"  >
+    </mat-slider>
+  </div>
+
+  <mat-form-field class="margin-10">
+    <mat-label>Price per Hour (in RSD)</mat-label>
+    <input matInput
+           ngModel
+           [(ngModel)]="pricePerHourInput"
+           #pricePerHour="ngModel"
+           type="number"
+           name="pricePerHour"
+           placeholder="RSD"
+           required>
+    <mat-error *ngIf="pricePerHour.invalid && pricePerHour.touched">You must enter a price per hour</mat-error>
+  </mat-form-field>
+
+
+
+  <mat-form-field class="margin-10">
+    <mat-label>Image link</mat-label>
+    <textarea matInput
+              ngModel
+              [(ngModel)]="imageInput"
+              #image="ngModel"
+              type="input"
+              name="image">
+    </textarea>
+  </mat-form-field>
+
+  <img *ngIf="image.touched" class="image-preview" [src]="image.value" >
+
+  <button mat-flat-button
+          color="primary"
+          type="submit"
+          [disabled]="courtForm.invalid"
+          class="button">Edit Hall
+  </button>
+
+
+</form>

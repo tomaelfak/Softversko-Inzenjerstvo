@@ -1,0 +1,28 @@
+.vertical-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;  /* Centers the elements horizontally */
+  align-self: flex-start;
+  gap: 20px;            /* Adds space between the elements */
+  padding: 20px;        /* Adds padding around the container */
+  background-color: #f9f9f9;  /* Light background color for the container */
+  border-radius: 10px;  /* Rounded corners */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);  /* Subtle shadow for depth */
+}
+
+.vertical-list > div {
+  width: 100%;          /* Full width for each child element */
+  min-width: 400px;
+  max-width: 600px;     /* Maximum width for each child element */
+  padding: 15px;        /* Padding inside each child element */
+  background-color: #ffffff;  /* White background for each child */
+  border: 1px solid #e0e0e0;  /* Light border around each child */
+  border-radius: 5px;   /* Rounded corners for each child */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);  /* Slight shadow for each child */
+}
+
+.edit-details{
+  display: flex;
+  align-self: flex-start;
+  align-items: center;
+}

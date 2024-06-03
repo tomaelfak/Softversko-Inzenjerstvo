@@ -1,0 +1,47 @@
+<h3 *ngIf="events.length === 0">There are no events for this hall</h3>
+
+<div *ngIf="events.length > 0">
+  <table mat-table [dataSource]="dataSource" matSort>
+    <ng-container matColumnDef="sport">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Sport </th>
+      <td mat-cell *matCellDef="let event"> {{event.sport}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="user" >
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Player username </th>
+      <td mat-cell *matCellDef="let event"> {{event.hostName}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="date" >
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Date </th>
+      <td mat-cell *matCellDef="let event"> {{event.date}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="time">
+      <th mat-header-cell *matHeaderCellDef> Time </th>
+      <td mat-cell *matCellDef="let event"> {{event.timeSlot.startTime}}:00 - {{event.timeSlot.endTime}}:00 </td>
+    </ng-container>
+
+    <ng-container matColumnDef="participants">
+      <th mat-header-cell *matHeaderCellDef> Max participants </th>
+      <td mat-cell *matCellDef="let event"> {{event.maxParticipants}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef> Actions </th>
+      <td mat-cell *matCellDef="let event">
+        <button mat-button color="warn" (click)="onDelete(event.id)">Delete</button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                 showFirstLastButtons
+                 aria-label="Select page of events">
+  </mat-paginator>
+
+</div>

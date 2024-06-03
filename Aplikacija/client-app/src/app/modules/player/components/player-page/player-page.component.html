@@ -1,0 +1,53 @@
+<mat-grid-list cols="5">
+    <mat-grid-tile [colspan]="2" [rowspan]="1">
+      <!-- Upper left-->
+      <div class="display-flex">
+        <img class="image" src="./assets/player-avatar.png">
+        <button *ngIf="belongsToCurrentUser" mat-raised-button class="button" color="accent" (click)="addImage()">Edit image</button>
+      </div>
+  
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="3" [rowspan]="2">
+  
+      <!-- Right-->
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="2" [rowspan]="1">
+      <!-- Middle left-->
+      <div class="display-flex">
+        <mat-card>
+          <mat-card-header style="margin-bottom: 20px">
+            <mat-card-title>
+             Name Surname
+            </mat-card-title>
+            <mat-card-subtitle>
+             {{ username }}
+            </mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <h4>
+              <span class="bold">Rating:</span> 4.67
+              <mat-icon color="accent">star</mat-icon>
+            </h4>
+            <h4>
+              <span class="bold">Bio:</span>
+              {{bio}}
+            </h4>
+  
+            <h4>
+              <span class="bold">Address:</span>
+              Bulevar Nemanjica 38
+            </h4>
+  
+  
+          </mat-card-content>
+  
+          <mat-card-actions>
+            <button *ngIf="belongsToCurrentUser" mat-raised-button color="primary" class="button">Edit bio</button>
+          </mat-card-actions>
+  
+        </mat-card>
+      </div>
+  
+    </mat-grid-tile>
+  
+  </mat-grid-list>  

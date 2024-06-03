@@ -1,0 +1,13 @@
+.width-300{
+  width: 80%;
+}
+:host{
+  display: block;
+  width: 100%;
+}
+.card{
+  max-height: 700px;
+  overflow-y: auto;
+  display: block;
+}
+

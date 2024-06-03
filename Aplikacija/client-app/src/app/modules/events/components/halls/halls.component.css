@@ -1,0 +1,26 @@
+.full-width{
+  width: 100%;
+}
+
+.margin-5 {
+  margin: 5px;
+}
+
+.center{
+  align-items: center;
+}
+
+.hallList{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  position: absolute;
+  top: 10%;
+  left: 25%;
+}
+
+.addButton{
+  margin: 10px;
+}

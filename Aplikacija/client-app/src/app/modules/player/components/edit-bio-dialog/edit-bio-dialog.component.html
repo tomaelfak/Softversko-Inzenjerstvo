@@ -1,0 +1,11 @@
+<h2 mat-dialog-title>Edit your bio</h2>
+<mat-dialog-content>
+  <mat-form-field>
+    <mat-label>Your bio</mat-label>
+    <textarea matInput [(ngModel)]="data.bio" placeholder="Bio"></textarea>
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-button [mat-dialog-close]="data.bio">Save</button>
+</mat-dialog-actions>

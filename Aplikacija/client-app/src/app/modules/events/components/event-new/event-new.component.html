@@ -1,0 +1,72 @@
+<mat-stepper #stepper linear>
+
+  <mat-step [stepControl]="firstFormGroup" errorMessage="Date is required" >
+    <form [formGroup]="firstFormGroup" class="center">
+      <ng-template matStepLabel>Choose a date</ng-template>
+      <mat-form-field>
+        <mat-label>Choose a date</mat-label>
+        <input matInput [matDatepicker]="picker" [matDatepickerFilter]="dateFilter" (dateChange)="onDateChange($event)" formControlName="firstCtrl" required>
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+
+
+  <mat-step [stepControl]="secondFormGroup" errorMessage="Must choose schedule.">
+    <form [formGroup]="secondFormGroup" class="center">
+      <ng-template matStepLabel>Choose time slots</ng-template>
+        <app-event-schedule [occupiedSlots]="occupiedSlots" (selectedSlotsChange)="onSelectedSlotsChange($event)" ></app-event-schedule>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+
+  <mat-step [stepControl]="thirdFormGroup" errorMessage="Number of players is required.">
+    <form [formGroup]="thirdFormGroup" class="center">
+      <ng-template matStepLabel>Number of players</ng-template>
+      <mat-form-field>
+        <mat-label>Number of players</mat-label>
+        <input matInput type="number" min="1" max="30" formControlName="thirdCtrl" required>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+
+  <mat-step [stepControl]="fourthFormGroup" errorMessage="Description is required.">
+    <form [formGroup]="fourthFormGroup" class="center">
+      <ng-template matStepLabel>Enter description</ng-template>
+      <mat-form-field>
+        <mat-label>Description</mat-label>
+        <textarea matInput formControlName="fourthCtrl" required></textarea>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+
+
+  <mat-step>
+    <ng-template matStepLabel>Done</ng-template>
+    <div class="center">
+      <p>Are you done?</p>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button (click)="stepper.reset()">Reset</button>
+        <button mat-button (click)="finish()">Finish</button>
+      </div>
+    </div>
+  </mat-step>
+</mat-stepper>

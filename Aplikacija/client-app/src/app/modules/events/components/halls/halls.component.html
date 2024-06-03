@@ -1,0 +1,16 @@
+<mat-grid-list cols="2" rowHeight="100%" gutterSize="10px">
+  <mat-grid-tile class="center">
+    <div class="hallList">
+      <button mat-fab class="addButton" (click)="onClickAdd()">
+        <mat-icon>add</mat-icon>
+      </button>
+      <app-halls-list (editHallEvent)="onClickEdit($event)" (showEventsEvent)="onShowEventsList($event)"></app-halls-list>
+    </div>
+
+  </mat-grid-tile>
+  <mat-grid-tile class="center">
+    <app-hall-new *ngIf="showNewHallForm" (hallCreated)="onHallCreated()"></app-hall-new>
+    <app-hall-edit *ngIf="showEditHallForm" [selectedHall]="hallToEdit" (hallEdited)="onHallEdited()"></app-hall-edit>
+    <app-hall-events-list *ngIf="showEventsList" [hallId]="hallToShowId"></app-hall-events-list>
+  </mat-grid-tile>
+</mat-grid-list>

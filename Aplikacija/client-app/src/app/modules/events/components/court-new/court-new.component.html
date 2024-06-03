@@ -1,0 +1,56 @@
+<form class="form-group" #courtForm="ngForm" (ngSubmit)="onSubmit(courtForm)">
+  <mat-progress-bar *ngIf="isLoading" mode="indeterminate"></mat-progress-bar>
+
+  <mat-form-field class="margin-10">
+    <mat-label>Select a sport</mat-label>
+    <mat-select required ngModel #sport="ngModel" name="sport">
+      <mat-option value="football">Football</mat-option>
+      <mat-option value="basketball">Basketball</mat-option>
+      <mat-option value="tennis">Tennis</mat-option>
+    </mat-select>
+    <mat-error *ngIf="sport.invalid && sport.touched">Must select a value</mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="margin-10">
+    <mat-label>Name</mat-label>
+    <input matInput
+           ngModel
+           #name="ngModel"
+           type="input"
+           name="name"
+           required>
+    <mat-error *ngIf="name.invalid && name.touched">You must enter a name</mat-error>
+  </mat-form-field>
+
+
+  <mat-form-field class="margin-10">
+    <mat-label>Address</mat-label>
+    <input matInput
+           ngModel
+           #address="ngModel"
+           type="input"
+           name="address"
+           required>
+    <mat-error *ngIf="address.invalid && address.touched">You must enter an address</mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="margin-10">
+    <mat-label>Image link</mat-label>
+    <textarea matInput
+           ngModel
+           #image="ngModel"
+           type="input"
+              name="image">
+    </textarea>
+  </mat-form-field>
+
+  <img *ngIf="image.touched" class="image-preview" [src]="image.value" >
+
+  <button mat-flat-button
+          color="primary"
+          type="submit"
+          [disabled]="courtForm.invalid"
+          class="button">Add court</button>
+
+
+</form>

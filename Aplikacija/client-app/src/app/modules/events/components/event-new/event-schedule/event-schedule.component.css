@@ -1,0 +1,14 @@
+button.selected {
+  background-color: #ffd740;
+  color: black;
+}
+
+button {
+  width: 200px;
+}
+.button-container {
+  height: 700px;
+  overflow-y: auto;
+  width: 220px;
+}
+

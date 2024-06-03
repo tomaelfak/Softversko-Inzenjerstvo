@@ -1,0 +1,8 @@
+.width{
+  width:80%;
+  position: relative;
+}
+:host{
+  display: block;
+  width: 100%;
+}

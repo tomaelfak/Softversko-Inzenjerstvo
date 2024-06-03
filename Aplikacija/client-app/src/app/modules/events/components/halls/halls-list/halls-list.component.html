@@ -1,0 +1,27 @@
+<h3 *ngIf="halls.length===0">There are no Halls...</h3>
+
+<mat-accordion *ngIf="halls.length > 0">
+  <mat-expansion-panel *ngFor="let hall of halls">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{hall.name}}
+      </mat-panel-title>
+      <mat-panel-description>
+        {{hall.sport}}
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <p>Address: {{hall.address}}</p>
+    <p>Opens: {{hall.startTime}}:00</p>
+    <p>Closes: {{hall.endTime}}:00</p>
+    <p>Price per hour: {{hall.price}}</p>
+    <img class="image" *ngIf="hall.image" src="{{hall.image}}">
+
+    <mat-action-row>
+      <button mat-button color="primary" (click)="showEvents(hall)">Show Events</button>
+      <button mat-button color="accent" (click)="editHall(hall)">Edit</button>
+      <button mat-button color="warn" (click)="deleteHall(hall.id)">Delete</button>
+    </mat-action-row>
+
+  </mat-expansion-panel>
+</mat-accordion>
