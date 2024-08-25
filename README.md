@@ -15,7 +15,7 @@ Mogućnost dopisivanja i dogovaranja preko privatnog chat-a.
 Formiranje timova preko aplikacije.
 
 
-#EN
+# EN
 Ball Ball Application
 
 Our project aims to facilitate agreements between users who want to engage in sports activities by offering them nearby courts or venues. There is also the option to form teams, where teams will compete, be ranked based on their results, and classified into better or worse teams. This will contribute to the competitive spirit and expand the possibilities offered by our application. Users can coordinate not only by scheduling time slots but also through our messaging system. With this in mind, the Ball Ball application is not just for booking sports activities but also has the features of a social network.
